@@ -9,7 +9,7 @@
   ...
 }:
 let
-  stateVersion = "23.11";
+  stateVersion = "25.05";
   nixStoreOptimiseAutomatic = true;
   nixGCAutomatic = true;
   nixGCFrequency = "weekly";
@@ -257,6 +257,9 @@ in
 
   # Enable Android debug bridge.
   programs.adb.enable = true;
+
+  programs.corectrl.enable = true;
+  programs.coolercontrol.enable = true;
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
