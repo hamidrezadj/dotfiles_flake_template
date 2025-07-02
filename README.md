@@ -68,10 +68,14 @@ n
 # Save and quit
 w
 
+# Encrypt main partition of storage
+cryptsetup luksFormat /dev/nvme0n1p3
+cryptsetup luksOpen /dev/nvme0n1p3 cryptroot
+
 # Format the partitions
 mkfs.fat -F 32 -n efi /dev/nvme0n1p1
 mkswap -L swap /dev/nvme0n1p2
-mkfs.btrfs -L main /dev/nvme0n1p3
+mkfs.btrfs -L main /dev/mapper/cryptroot
 
 # Create BTRFS subvolumes
 mount /dev/disk/by-label/main /mnt
